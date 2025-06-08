@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Selamat Ulang Tahun, Sayang!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Tailwind CSS output (disederhanakan dari Tailwind CLI) */
+        
+        body {
+            background-image: url('https://www.transparenttextures.com/patterns/cats.png');
+            background-color: #ffe6f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: 'Patrick Hand', sans-serif;
+        }
+        
+        .text-5xl {
+            font-size: 3.5rem;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .text-pink-600 {
+            color: #db2777;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        .text-xl {
+            font-size: 1.5rem;
+        }
+        
+        .text-gray-700 {
+            color: #374151;
+        }
+        
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+        
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bg-pink-500 {
+            background-color: #ec4899;
+        }
+        
+        .text-white {
+            color: #ffffff;
+        }
+        
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        
+        .hover\:bg-pink-600:hover {
+            background-color: #db2777;
+        }
+        
+        .transition-colors {
+            transition: background-color 0.2s;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+        
+        .p-4 {
+            padding: 1rem;
+        }
+        
+        .bg-pink-100 {
+            background-color: #fce7f3;
+        }
+        
+        .text-2xl {
+            font-size: 1.75rem;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .bg-white {
+            background-color: #ffffff;
+        }
+        
+        .bgO-80 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .pointer-events-none {
+            pointer-events: none;
+        }
+        
+        .max-w-lg {
+            max-width: 32rem;
+        }
+        
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .p-6 {
+            padding: 1.5rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        /* Font dan efek khusus */
+        
+        h1 {
+            font-family: 'Comic Neue', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        p,
+        button {
+            font-family: 'Patrick Hand', sans-serif;
+        }
+        
+        button {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        /* Animasi */
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(-25%);
+            }
+            50% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        
+        .pixel-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            animation: float 4s ease-in infinite;
+        }
+        
+        @keyframes catRun {
+            0% {
+                transform: translateX(-100vw);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+        
+        .cat {
+            position: absolute;
+            font-size: 2rem;
+            animation: catRun 3s linear;
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .surprise-message {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .cat-icon {
+            font-size: 3rem;
+            animation: popIn 0.5s ease-out;
+        }
+        /* Responsif untuk HP */
+        
+        @media (max-width: 640px) {
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            .text-xl {
+                font-size: 1.2rem;
+            }
+            .text-2xl {
+                font-size: 1.4rem;
+            }
+            .p-6 {
+                padding: 1rem;
+            }
+            .p-4 {
+                padding: 0.75rem;
+            }
+            .max-w-lg {
+                max-width: 90%;
+            }
+            .cat-icon {
+                font-size: 2rem;
+            }
+            .px-6 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .py-2 {
+                padding-top: 0.3rem;
+                padding-bottom: 0.3rem;
+            }
+            .mb-6 {
+                margin-bottom: 1rem;
+            }
+            .mt-6 {
+                margin-top: 1rem;
+            }
+            .grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .gap-4 {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Latar belakang hati pixel dan kucing -->
+    <div id="hearts" class="fixed inset-0 pointer-events-none"></div>
+    <div id="cats" class="fixed inset-0 pointer-events-none"></div>
+
+    <!-- Konten utama -->
+    <div class="relative z-10 text-center p-6 max-w-lg mx-auto bg-white bgO-80 rounded-lg shadow-lg">
+        <h1 class="text-5xl font-bold text-pink-600 mb-4 animate-bounce">Selamat Ulang Tahun, Sayang! 🐾</h1>
+        <p class="text-xl text-gray-700 mb-6">
+            YEAYYYY! Hari ini adalah hari spesialmu, sayangku! 🎉<br> Maaciii yaa udah hadir dalam hidup aku, Semoga harimu penuh kebahagiaan! 😻💖
+        </p>
+
+        <!-- Elemen lucu pengganti galeri -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="cat-icon">😺</div>
+            <div class="cat-icon">🐾</div>
+            <div class="cat-icon">😻</div>
+            <div class="cat-icon">🐱</div>
+        </div>
+
+        <!-- Tombol Interaktif -->
+        <button id="loveButton" class="bg-pink-500 text-white py-2 px-6 rounded-full hover:bg-pink-600 transition-colors text-xl">
+            Klik untuk Kejutan Meow! 😺
+        </button>
+
+        <!-- Pesan Kejutan (Awalnya Tersembunyi) -->
+        <div id="surpriseMessage" class="hidden mt-6 p-4 bg-pink-100 rounded-lg shadow-lg">
+            <p class="text-2xl text-pink-600 font-semibold surprise-message">
+                💕Aku sayang kamu lebih dari apapun!💕<br> Selamat ulang tahun, semoga kita selalu bersama-sama terus yaa! 😻
+            </p>
+        </div>
+    </div>
+
+    <audio id="meowSound">
+        <source src="https://freesound.org/data/previews/528/528496_11077407-lq.mp3" type="audio/mpeg">
+        <source src="https://freesound.org/data/previews/528/528496_11077407-lq.wav" type="audio/wav">
+        Maaf, browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script>
+        // Animasi hati pixel mengambang
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'pixel-heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 600);
+
+        // Animasi kucing berlari
+        function createCat() {
+            const cat = document.createElement('div');
+            cat.className = 'cat';
+            cat.innerHTML = ['😺', '🐾', '😻', '🐱'][Math.floor(Math.random() * 4)];
+            cat.style.top = Math.random() * 80 + 10 + 'vh';
+            document.getElementById('cats').appendChild(cat);
+            setTimeout(() => cat.remove(), 3000);
+        }
+        setInterval(createCat, 2000);
+
+        // Efek confetti
+        function launchConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: {
+                    y: 0.6
+                },
+                colors: ['#ff6b6b', '#ff9ff3', '#feca57', '#54a0ff']
+            });
+        }
+
+        // Kejutan saat tombol diklik
+        const meowSound = document.getElementById('meowSound');
+        document.getElementById('loveButton').addEventListener('click', () => {
+            const surprise = document.getElementById('surpriseMessage');
+            surprise.classList.remove('hidden');
+            launchConfetti();
+            meowSound.play().catch((error) => {
+                console.error('Gagal memutar audio:', error);
+            });
+            document.getElementById('loveButton').classList.add('hidden');
+        });
+
+        // Periksa apakah audio dapat dimuat
+        meowSound.addEventListener('error', () => {
+            console.error('Audio gagal dimuat. Pastikan sumber audio valid.');
+        });
+    </script>
+</body>
+
+</html>
